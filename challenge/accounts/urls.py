@@ -9,4 +9,9 @@ router = routers.SimpleRouter()
 
 router.register(r'accounts', views.AccountViewSet)
 
-urlpatterns = router.urls
+#urlpatterns = router.urls
+
+urlpatterns = [
+    path('fizz-buzz/', views.FizzBuzzView.as_view(), name="fizz-buzz"),
+    path('', include(router.urls))
+]
