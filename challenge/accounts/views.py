@@ -25,6 +25,13 @@ class AccountViewSet(mixins.ListModelMixin,
     serializer_class = serializers.AccountSerializer
     queryset = models.Account.objects.all()
 
+    def update(self, request, *args, **kwargs):
+        account = self.get_object()
+        serializer = serializers.AccountUpdateSerializer(account, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
 
 class FizzBuzzView(views.APIView):
 
