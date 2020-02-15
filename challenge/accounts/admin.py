@@ -5,5 +5,6 @@ from . import models
 
 @admin.register(models.Account)
 class AccountAdmin(admin.ModelAdmin):
+    list_filter = ('shipping_country',)
     list_display = ('name', 'phone')
     search_fields = ('name',)
